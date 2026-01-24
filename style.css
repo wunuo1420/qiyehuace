@@ -1,0 +1,221 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    -webkit-tap-highlight-color: transparent; /* 消除微信点击高亮 */
+    -webkit-user-select: none; /* 禁止微信长按选择 */
+    user-select: none;
+}
+
+.book-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.book {
+    position: relative;
+    width: 800px;
+    height: 600px;
+    perspective: 2000px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.page {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: white;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    transform-origin: left center;
+    transition: transform 0.6s cubic-bezier(0.645, 0.045, 0.355, 1), z-index 0.6s ease, opacity 0.3s ease;
+    backface-visibility: hidden;
+    border: 1px solid #e0e0e0;
+    cursor: pointer;
+    z-index: 1;
+    border-radius: 10px;
+}
+
+/* 所有页面单页显示 */
+.page.cover {
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+}
+
+.page.cover.back {
+    background: linear-gradient(135deg, #34495e 0%, #2c3e50 100%);
+}
+
+/* 初始状态：只有封面显示，其他页面隐藏 */
+.page {
+    opacity: 0;
+    z-index: 0;
+}
+
+/* 封面显示在最上方 */
+.page.cover.front {
+    z-index: 100;
+    opacity: 1;
+}
+
+/* 当前页面显示在最上方 */
+.current-page {
+    z-index: 20;
+    opacity: 1;
+}
+
+/* 翻页效果 - 所有页面都向右翻 */
+.page.flipped {
+    transform: rotateY(-180deg);
+    z-index: 5;
+}
+
+/* 鼠标悬停效果 - 对当前可翻页的页面生效 */
+.current-page:not(.flipped):hover {
+    transform: rotateY(-10deg);
+}
+
+/* 确保翻页顺序正确 */
+.book {
+    overflow: hidden;
+}
+
+.content {
+    padding: 40px;
+    height: 100%;
+    overflow-y: auto;
+}
+
+.content h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+}
+
+.content h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+    color: #2c3e50;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 10px;
+}
+
+.content p {
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    color: #555;
+}
+
+.image-placeholder {
+    width: 100%;
+    height: 200px;
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    border-radius: 8px;
+    margin: 20px 0;
+}
+
+
+
+/* 响应式设计 - 适配微信和移动设备 */
+@media (max-width: 900px) {
+    .book {
+        width: 80vw;
+        height: 80vh;
+    }
+    
+    .content {
+        padding: 30px;
+    }
+    
+    .content h1 {
+        font-size: 36px;
+    }
+    
+    .content h2 {
+        font-size: 24px;
+    }
+    
+    .content p {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 700px) {
+    .book {
+        width: 90vw;
+        height: 90vh;
+    }
+    
+    .content {
+        padding: 25px;
+    }
+    
+    .content h1 {
+        font-size: 32px;
+    }
+    
+    .content h2 {
+        font-size: 22px;
+    }
+    
+    .content p {
+        font-size: 15px;
+    }
+    
+    .image-placeholder {
+        height: 150px;
+    }
+}
+
+@media (max-width: 500px) {
+    .book {
+        width: 100vw;
+        height: 100vh;
+        border-radius: 0;
+        box-shadow: none;
+    }
+    
+    .page {
+        border-radius: 0;
+    }
+    
+    .content {
+        padding: 20px;
+    }
+    
+    .content h1 {
+        font-size: 28px;
+    }
+    
+    .content h2 {
+        font-size: 20px;
+    }
+    
+    .content p {
+        font-size: 14px;
+    }
+    
+    .image-placeholder {
+        height: 120px;
+    }
+}
