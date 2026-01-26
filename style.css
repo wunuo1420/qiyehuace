@@ -51,7 +51,6 @@ body {
 
 /* 所有页面单页显示 */
 .page.cover {
-    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
     color: white;
     display: flex;
     justify-content: center;
@@ -61,10 +60,18 @@ body {
     overflow: hidden;
 }
 
+/* 封面前面 - 炫彩特效 */
 .page.cover.front {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
     background-size: 400% 400%;
     animation: gradientShift 8s ease infinite;
+    z-index: 100;
+    opacity: 1;
+}
+
+/* 封面背面 */
+.page.cover.back {
+    background: linear-gradient(135deg, #34495e 0%, #2c3e50 100%);
 }
 
 /* 封面炫彩特效 */
@@ -145,20 +152,10 @@ body {
     }
 }
 
-.page.cover.back {
-    background: linear-gradient(135deg, #34495e 0%, #2c3e50 100%);
-}
-
 /* 初始状态：只有封面显示，其他页面隐藏 */
-.page {
+.page:not(.cover) {
     opacity: 0;
     z-index: 0;
-}
-
-/* 封面显示在最上方 */
-.page.cover.front {
-    z-index: 100;
-    opacity: 1;
 }
 
 /* 当前页面显示在最上方 */
