@@ -9,8 +9,12 @@ document.addEventListener('DOMContentLoaded', function() {
     function initCurrentPage() {
         pages.forEach((page, index) => {
             page.classList.remove('current-page');
+            if (!page.classList.contains('flipped')) {
+                page.style.transform = '';
+            }
         });
         pages[currentPageIndex].classList.add('current-page');
+        pages[currentPageIndex].style.transform = 'rotateX(0deg)';
     }
     
     function nextPage() {

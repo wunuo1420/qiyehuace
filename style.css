@@ -32,6 +32,8 @@ body {
     height: 600px;
     perspective: 2000px;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    transition: opacity 0.5s ease;
 }
 
 .page {
@@ -224,17 +226,20 @@ body {
 .page.current-page {
     z-index: 20;
     opacity: 1;
+    transform: rotateX(0deg);
 }
 
 /* 翻页效果 - 所有页面都向上翻 */
 .page.flipped {
     transform: rotateX(-180deg);
     z-index: 5;
+    opacity: 0.5;
 }
 
 /* 鼠标悬停效果 - 对当前可翻页的页面生效 */
-.current-page:not(.flipped):hover {
-    transform: rotateX(-10deg);
+.page.current-page:not(.flipped):not(.cover):hover {
+    transform: rotateX(-5deg);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
 }
 
 /* 确保翻页顺序正确 */
