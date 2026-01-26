@@ -164,9 +164,9 @@ body {
 }
 
 /* 当前页面显示在最上方 */
-.current-page {
+.page.current-page {
     z-index: 20;
-    opacity: 1;
+    opacity: 1 !important;
 }
 
 /* 翻页效果 - 所有页面都向上翻 */
