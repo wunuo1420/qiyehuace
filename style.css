@@ -151,9 +151,8 @@ body {
     }
 }
 
-/* 初始状态：只有封面显示，其他页面隐藏 */
+/* 初始状态：所有页面默认样式 */
 .page {
-    opacity: 0;
     z-index: 0;
 }
 
@@ -166,7 +165,7 @@ body {
 /* 当前页面显示在最上方 */
 .page.current-page {
     z-index: 20;
-    opacity: 1 !important;
+    opacity: 1;
 }
 
 /* 翻页效果 - 所有页面都向上翻 */
