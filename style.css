@@ -152,9 +152,15 @@ body {
 }
 
 /* 初始状态：只有封面显示，其他页面隐藏 */
-.page:not(.cover) {
+.page {
     opacity: 0;
     z-index: 0;
+}
+
+/* 封面显示在最上方 */
+.page.cover.front {
+    z-index: 100;
+    opacity: 1;
 }
 
 /* 当前页面显示在最上方 */
