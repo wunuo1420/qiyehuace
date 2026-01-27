@@ -14,9 +14,10 @@ body {
     padding: 0;
     margin: 0;
     overflow: hidden;
-    -webkit-tap-highlight-color: transparent; /* 消除微信点击高亮 */
-    -webkit-user-select: none; /* 禁止微信长按选择 */
+    -webkit-tap-highlight-color: transparent;
+    -webkit-user-select: none;
     user-select: none;
+    touch-action: manipulation;
 }
 
 .book-container {

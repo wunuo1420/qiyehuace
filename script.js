@@ -4,6 +4,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const totalPages = pages.length;
     let startY = 0;
     let endY = 0;
+    let startX = 0;
+    let endX = 0;
+    let isSwipe = false;
     const SWIPE_THRESHOLD = 50;
     
     function initCurrentPage() {
@@ -34,6 +37,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     function handlePageClick(event) {
+        if (isSwipe) return;
         const page = event.currentTarget;
         const index = Array.from(pages).indexOf(page);
         
@@ -44,16 +48,67 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    function handleSwipeStart(event) {
-        startY = event.touches ? event.touches[0].clientY : event.clientY;
+    function handleTouchStart(event) {
+        isSwipe = false;
+        startY = event.touches[0].clientY;
+        startX = event.touches[0].clientX;
     }
     
-    function handleSwipeEnd(event) {
-        endY = event.changedTouches ? event.changedTouches[0].clientY : event.clientY;
+    function handleTouchMove(event) {
+        const touch = event.touches[0];
+        const diffY = Math.abs(touch.clientY - startY);
+        const diffX = Math.abs(touch.clientX - startX);
+        
+        if (diffY > 10 || diffX > 10) {
+            isSwipe = true;
+        }
+    }
+    
+    function handleTouchEnd(event) {
+        endY = event.changedTouches[0].clientY;
+        endX = event.changedTouches[0].clientX;
         handleSwipeGesture();
     }
     
     function handleSwipeGesture() {
+        if (!isSwipe) return;
+        
+        const diffY = endY - startY;
+        const diffX = endX - startX;
+        
+        if (Math.abs(diffY) > Math.abs(diffX)) {
+            if (Math.abs(diffY) > SWIPE_THRESHOLD && diffY < 0) {
+                nextPage();
+            } else if (Math.abs(diffY) > SWIPE_THRESHOLD && diffY > 0) {
+                prevPage();
+            }
+        }
+    }
+    
+    function handleMouseDown(event) {
+        startY = event.clientY;
+        startX = event.clientX;
+        isSwipe = false;
+    }
+    
+    function handleMouseMove(event) {
+        const diffY = Math.abs(event.clientY - startY);
+        const diffX = Math.abs(event.clientX - startX);
+        
+        if (diffY > 10 || diffX > 10) {
+            isSwipe = true;
+        }
+    }
+    
+    function handleMouseUp(event) {
+        endY = event.clientY;
+        endX = event.clientX;
+        handleMouseSwipeGesture();
+    }
+    
+    function handleMouseSwipeGesture() {
+        if (!isSwipe) return;
+        
         const diffY = endY - startY;
         
         if (Math.abs(diffY) > SWIPE_THRESHOLD && diffY < 0) {
@@ -73,13 +128,14 @@ document.addEventListener('DOMContentLoaded', function() {
     
     pages.forEach(page => {
         page.addEventListener('click', handlePageClick);
-        page.addEventListener('touchstart', handleSwipeStart);
-        page.addEventListener('touchend', handleSwipeEnd);
-        page.addEventListener('mousedown', handleSwipeStart);
-        page.addEventListener('mouseup', handleSwipeEnd);
-        page.addEventListener('mousedown', function(e) {
-            e.preventDefault();
-        });
+        
+        page.addEventListener('touchstart', handleTouchStart, { passive: true });
+        page.addEventListener('touchmove', handleTouchMove, { passive: true });
+        page.addEventListener('touchend', handleTouchEnd, { passive: true });
+        
+        page.addEventListener('mousedown', handleMouseDown);
+        page.addEventListener('mousemove', handleMouseMove);
+        page.addEventListener('mouseup', handleMouseUp);
     });
     
     initCurrentPage();
