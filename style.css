@@ -54,59 +54,12 @@ body {
 }
 
 .page.cover {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #f5576c 75%, #667eea 100%);
-    background-size: 400% 400%;
-    animation: gradientShift 15s ease infinite;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     z-index: 100;
-    position: relative;
-    overflow: hidden;
-}
-
-.page.cover::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
-    animation: rotate 20s linear infinite;
-}
-
-.page.cover::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.1) 100%);
-    pointer-events: none;
 }
 
 .page.back-cover {
     background: linear-gradient(135deg, #34495e 0%, #2c3e50 100%);
-}
-
-@keyframes gradientShift {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
-}
-
-@keyframes rotate {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
 }
 
 .page-content {
@@ -138,50 +91,24 @@ body {
     width: 180px;
     height: 180px;
     margin-bottom: 50px;
-    animation: logoFloat 4s ease-in-out infinite;
     position: relative;
 }
 
 .logo svg {
     width: 100%;
     height: 100%;
-    filter: drop-shadow(0 15px 35px rgba(0, 0, 0, 0.4));
-}
-
-@keyframes logoFloat {
-    0%, 100% {
-        transform: translateY(0px) scale(1);
-    }
-    50% {
-        transform: translateY(-15px) scale(1.02);
-    }
+    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3));
 }
 
 .page.cover h1 {
     font-size: 48px;
     color: white;
     text-align: center;
-    font-weight: 800;
+    font-weight: 700;
     margin-bottom: 20px;
     letter-spacing: 4px;
     line-height: 1.3;
-    text-shadow: 
-        0 0 10px rgba(255, 255, 255, 0.3),
-        0 4px 8px rgba(0, 0, 0, 0.3),
-        0 8px 16px rgba(0, 0, 0, 0.2);
-    position: relative;
-    animation: titleGlow 3s ease-in-out infinite alternate;
-}
-
-.page.cover h1::before {
-    content: '';
-    position: absolute;
-    top: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80px;
-    height: 3px;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .page.cover p {
@@ -191,37 +118,7 @@ body {
     font-weight: 300;
     opacity: 0.95;
     letter-spacing: 12px;
-    text-shadow: 
-        0 2px 4px rgba(0, 0, 0, 0.3),
-        0 4px 8px rgba(0, 0, 0, 0.2);
-    position: relative;
-    animation: subtitleFade 4s ease-in-out infinite;
-}
-
-@keyframes titleGlow {
-    from {
-        text-shadow: 
-            0 0 10px rgba(255, 255, 255, 0.3),
-            0 4px 8px rgba(0, 0, 0, 0.3),
-            0 8px 16px rgba(0, 0, 0, 0.2);
-    }
-    to {
-        text-shadow: 
-            0 0 20px rgba(255, 255, 255, 0.5),
-            0 4px 8px rgba(0, 0, 0, 0.3),
-            0 8px 16px rgba(0, 0, 0, 0.2);
-    }
-}
-
-@keyframes subtitleFade {
-    0%, 100% {
-        opacity: 0.9;
-        transform: translateY(0);
-    }
-    50% {
-        opacity: 1;
-        transform: translateY(-2px);
-    }
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .page.back-cover h2 {
@@ -284,18 +181,6 @@ body {
     display: block;
 }
 
-.product-image::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(45deg, rgba(255, 255, 255, 0.1) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.1) 75%, transparent 75%, transparent);
-    background-size: 20px 20px;
-    opacity: 0.3;
-}
-
 .product-details {
     margin-top: 25px;
 }
@@ -329,9 +214,9 @@ body {
     gap: 20px;
     margin-top: 30px;
     padding: 20px;
-    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    background: #f5f7fa;
     border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 .price-row {
@@ -342,13 +227,7 @@ body {
     padding: 15px;
     background: white;
     border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.price-row:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
 }
 
 .price-label {
@@ -380,25 +259,10 @@ body {
     z-index: 10;
 }
 
-.page.current:not(.flipped):not(.cover):hover {
-    transform: rotateX(-5deg);
-    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
-}
-
 .navigation-hint {
     color: white;
     font-size: 16px;
     opacity: 0.8;
-    animation: fadeInOut 2s ease-in-out infinite;
-}
-
-@keyframes fadeInOut {
-    0%, 100% {
-        opacity: 0.5;
-    }
-    50% {
-        opacity: 1;
-    }
 }
 
 @media (max-width: 900px) {
