@@ -78,10 +78,10 @@ document.addEventListener('DOMContentLoaded', function() {
         const diffY = endY - startY;
         const diffX = endX - startX;
         
-        if (Math.abs(diffY) > Math.abs(diffX)) {
-            if (Math.abs(diffY) > SWIPE_THRESHOLD && diffY < 0) {
+        if (Math.abs(diffX) > Math.abs(diffY)) {
+            if (Math.abs(diffX) > SWIPE_THRESHOLD && diffX > 0) {
                 nextPage();
-            } else if (Math.abs(diffY) > SWIPE_THRESHOLD && diffY > 0) {
+            } else if (Math.abs(diffX) > SWIPE_THRESHOLD && diffX < 0) {
                 prevPage();
             }
         }
@@ -111,20 +111,20 @@ document.addEventListener('DOMContentLoaded', function() {
     function handleMouseSwipeGesture() {
         if (!isSwipe) return;
         
-        const diffY = endY - startY;
+        const diffX = endX - startX;
         
-        if (Math.abs(diffY) > SWIPE_THRESHOLD && diffY < 0) {
+        if (Math.abs(diffX) > SWIPE_THRESHOLD && diffX > 0) {
             nextPage();
-        } else if (Math.abs(diffY) > SWIPE_THRESHOLD && diffY > 0) {
+        } else if (Math.abs(diffX) > SWIPE_THRESHOLD && diffX < 0) {
             prevPage();
         }
     }
     
     document.addEventListener('keydown', function(e) {
-        if (e.key === 'ArrowUp' || e.key === ' ') {
+        if (e.key === 'ArrowRight' || e.key === ' ') {
             e.preventDefault();
             nextPage();
-        } else if (e.key === 'ArrowDown') {
+        } else if (e.key === 'ArrowLeft') {
             e.preventDefault();
             prevPage();
         }
