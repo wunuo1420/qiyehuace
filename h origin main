@@ -1,0 +1,45 @@
+[1mdiff --git a/index.html b/index.html[m
+[1mindex ddcdd75..38ad411 100644[m
+[1m--- a/index.html[m
+[1m+++ b/index.html[m
+[36m@@ -4,10 +4,10 @@[m
+     <meta charset="UTF-8">[m
+     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">[m
+     <title>产品画册 - 广东郁金香日化有限公司</title>[m
+[31m-    <meta name="description" content="广东郁金香日化有限公司 - 专业香薰产品制造商">[m
+[31m-    <meta name="keywords" content="香薰,精油,蜡烛,日化,产品画册">[m
+[32m+[m[32m    <meta name="description" content="广东郁金香日化有限公司 - 专业日化产品制造商">[m
+[32m+[m[32m    <meta name="keywords" content="洗发水,沐浴露,产品画册">[m
+     <meta property="og:title" content="产品画册">[m
+[31m-    <meta property="og:description" content="广东郁金香日化有限公司 - 专业香薰产品制造商">[m
+[32m+[m[32m    <meta property="og:description" content="广东郁金香日化有限公司 - 专业日化产品制造商">[m
+     <meta property="og:type" content="website">[m
+     <meta property="og:url" content="https://wunuo1420.github.io/qiyehuace/">[m
+     <meta name="theme-color" content="#667eea">[m
+[36m@@ -96,7 +96,7 @@[m
+             [m
+             <div class="page">[m
+                 <div class="page-content">[m
+[31m-                    <h2>香薰扩香器</h2>[m
+[32m+[m[32m                    <h2>禧兰诗蓬松控油去屑洗发水</h2>[m
+                     <div class="product-image"></div>[m
+                     <p>设计精美的扩香器，配合郁金香精油使用，让香气均匀弥漫整个空间。</p>[m
+                     <div class="product-details">[m
+[36m@@ -128,7 +128,7 @@[m
+             [m
+             <div class="page">[m
+                 <div class="page-content">[m
+[31m-                    <h2>香薰礼盒</h2>[m
+[32m+[m[32m                    <h2>禧兰诗丝质顺滑去屑洗发水</h2>[m
+                     <div class="product-image"></div>[m
+                     <p>精心搭配的香薰礼盒，包含精油、蜡烛、扩香器，是送礼佳选。</p>[m
+                     <div class="product-details">[m
+[36m@@ -160,7 +160,7 @@[m
+             [m
+             <div class="page">[m
+                 <div class="page-content">[m
+[31m-                    <h2>香薰配件</h2>[m
+[32m+[m[32m                    <h2>禧兰诗蚕丝蛋白奢养润发乳</h2>[m
+                     <div class="product-image"></div>[m
+                     <p>提供各类香薰配件，提升使用体验，让香薰生活更加便捷。</p>[m
+                     <div class="product-details">[m
