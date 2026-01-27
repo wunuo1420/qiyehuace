@@ -1,7 +1,9 @@
 document.addEventListener('DOMContentLoaded', function() {
+    const book = document.getElementById('book');
     const pages = document.querySelectorAll('.page');
     let currentPageIndex = 0;
     const totalPages = pages.length;
+    
     let startY = 0;
     let endY = 0;
     let startX = 0;
@@ -11,12 +13,12 @@ document.addEventListener('DOMContentLoaded', function() {
     
     function initCurrentPage() {
         pages.forEach((page, index) => {
-            page.classList.remove('current-page');
+            page.classList.remove('current');
             if (!page.classList.contains('flipped')) {
                 page.style.transform = '';
             }
         });
-        pages[currentPageIndex].classList.add('current-page');
+        pages[currentPageIndex].classList.add('current');
         pages[currentPageIndex].style.transform = 'rotateX(0deg)';
     }
     
@@ -120,8 +122,10 @@ document.addEventListener('DOMContentLoaded', function() {
     
     document.addEventListener('keydown', function(e) {
         if (e.key === 'ArrowUp' || e.key === ' ') {
+            e.preventDefault();
             nextPage();
         } else if (e.key === 'ArrowDown') {
+            e.preventDefault();
             prevPage();
         }
     });
@@ -138,9 +142,9 @@ document.addEventListener('DOMContentLoaded', function() {
         page.addEventListener('mouseup', handleMouseUp);
     });
     
-    initCurrentPage();
-    
     setTimeout(() => {
-        document.querySelector('.book').style.opacity = '1';
+        book.classList.add('loaded');
     }, 100);
+    
+    initCurrentPage();
 });
