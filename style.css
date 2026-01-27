@@ -54,10 +54,34 @@ body {
 }
 
 .page.cover {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #f5576c 75%, #667eea 100%);
     background-size: 400% 400%;
-    animation: gradientShift 8s ease infinite;
+    animation: gradientShift 15s ease infinite;
     z-index: 100;
+    position: relative;
+    overflow: hidden;
+}
+
+.page.cover::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+    animation: rotate 20s linear infinite;
+}
+
+.page.cover::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.1) 100%);
+    pointer-events: none;
 }
 
 .page.back-cover {
@@ -76,6 +100,15 @@ body {
     }
 }
 
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
 .page-content {
     height: 100%;
     padding: 50px;
@@ -88,6 +121,8 @@ body {
     align-items: center;
     justify-content: center;
     padding: 60px 40px;
+    position: relative;
+    z-index: 1;
 }
 
 .page.back-cover .page-content {
@@ -100,46 +135,93 @@ body {
 }
 
 .logo {
-    width: 140px;
-    height: 140px;
-    margin-bottom: 40px;
-    animation: logoFloat 3s ease-in-out infinite;
+    width: 180px;
+    height: 180px;
+    margin-bottom: 50px;
+    animation: logoFloat 4s ease-in-out infinite;
+    position: relative;
 }
 
 .logo svg {
     width: 100%;
     height: 100%;
-    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3));
+    filter: drop-shadow(0 15px 35px rgba(0, 0, 0, 0.4));
 }
 
 @keyframes logoFloat {
     0%, 100% {
-        transform: translateY(0px);
+        transform: translateY(0px) scale(1);
     }
     50% {
-        transform: translateY(-10px);
+        transform: translateY(-15px) scale(1.02);
     }
 }
 
 .page.cover h1 {
-    font-size: 42px;
+    font-size: 48px;
     color: white;
     text-align: center;
-    font-weight: 700;
-    margin-bottom: 15px;
-    letter-spacing: 3px;
-    line-height: 1.4;
-    text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.3);
+    font-weight: 800;
+    margin-bottom: 20px;
+    letter-spacing: 4px;
+    line-height: 1.3;
+    text-shadow: 
+        0 0 10px rgba(255, 255, 255, 0.3),
+        0 4px 8px rgba(0, 0, 0, 0.3),
+        0 8px 16px rgba(0, 0, 0, 0.2);
+    position: relative;
+    animation: titleGlow 3s ease-in-out infinite alternate;
+}
+
+.page.cover h1::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
 }
 
 .page.cover p {
-    font-size: 22px;
+    font-size: 24px;
     color: white;
     text-align: center;
     font-weight: 300;
     opacity: 0.95;
-    letter-spacing: 8px;
-    text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.3);
+    letter-spacing: 12px;
+    text-shadow: 
+        0 2px 4px rgba(0, 0, 0, 0.3),
+        0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
+    animation: subtitleFade 4s ease-in-out infinite;
+}
+
+@keyframes titleGlow {
+    from {
+        text-shadow: 
+            0 0 10px rgba(255, 255, 255, 0.3),
+            0 4px 8px rgba(0, 0, 0, 0.3),
+            0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+    to {
+        text-shadow: 
+            0 0 20px rgba(255, 255, 255, 0.5),
+            0 4px 8px rgba(0, 0, 0, 0.3),
+            0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+}
+
+@keyframes subtitleFade {
+    0%, 100% {
+        opacity: 0.9;
+        transform: translateY(0);
+    }
+    50% {
+        opacity: 1;
+        transform: translateY(-2px);
+    }
 }
 
 .page.back-cover h2 {
@@ -324,18 +406,18 @@ body {
     }
     
     .logo {
-        width: 120px;
-        height: 120px;
+        width: 150px;
+        height: 150px;
     }
     
     .page.cover h1 {
-        font-size: 32px;
-        letter-spacing: 2px;
+        font-size: 36px;
+        letter-spacing: 3px;
     }
     
     .page.cover p {
-        font-size: 18px;
-        letter-spacing: 5px;
+        font-size: 20px;
+        letter-spacing: 8px;
     }
     
     .page-content h2 {
@@ -380,19 +462,19 @@ body {
     }
     
     .logo {
-        width: 100px;
-        height: 100px;
+        width: 130px;
+        height: 130px;
     }
     
     .page.cover h1 {
-        font-size: 28px;
-        letter-spacing: 1px;
+        font-size: 32px;
+        letter-spacing: 2px;
         line-height: 1.3;
     }
     
     .page.cover p {
-        font-size: 16px;
-        letter-spacing: 3px;
+        font-size: 18px;
+        letter-spacing: 6px;
     }
     
     .page.back-cover h2 {
@@ -451,8 +533,8 @@ body {
     }
     
     .logo {
-        width: 90px;
-        height: 90px;
+        width: 120px;
+        height: 120px;
     }
     
     .page.cover h1 {
