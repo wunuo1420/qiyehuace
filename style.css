@@ -373,7 +373,11 @@ body {
 
 .page.flipped {
     transform: rotateX(-180deg);
-    z-index: 5;
+    z-index: 1;
+}
+
+.page:not(.flipped):not(.current) {
+    z-index: 10;
 }
 
 .page.current:not(.flipped):not(.cover):hover {
