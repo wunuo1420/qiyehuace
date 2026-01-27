@@ -145,7 +145,10 @@ body {
 .logo svg {
     width: 100%;
     height: 100%;
-    filter: drop-shadow(0 15px 35px rgba(0, 0, 0, 0.4));
+    filter: 
+        drop-shadow(0 15px 35px rgba(0, 0, 0, 0.4))
+        drop-shadow(0 5px 15px rgba(0, 0, 0, 0.3))
+        drop-shadow(0 2px 5px rgba(0, 0, 0, 0.2));
 }
 
 @keyframes logoFloat {
@@ -166,9 +169,19 @@ body {
     letter-spacing: 4px;
     line-height: 1.3;
     text-shadow: 
-        0 0 10px rgba(255, 255, 255, 0.3),
-        0 4px 8px rgba(0, 0, 0, 0.3),
-        0 8px 16px rgba(0, 0, 0, 0.2);
+        0 1px 0 #ccc,
+        0 2px 0 #c9c9c9,
+        0 3px 0 #bbb,
+        0 4px 0 #b9b9b9,
+        0 5px 0 #aaa,
+        0 6px 1px rgba(0,0,0,.1),
+        0 0 5px rgba(0,0,0,.1),
+        0 1px 3px rgba(0,0,0,.3),
+        0 3px 5px rgba(0,0,0,.2),
+        0 5px 10px rgba(0,0,0,.25),
+        0 10px 10px rgba(0,0,0,.2),
+        0 20px 20px rgba(0,0,0,.15),
+        0 0 30px rgba(255, 255, 255, 0.3);
     position: relative;
     animation: titleGlow 3s ease-in-out infinite alternate;
 }
@@ -192,8 +205,15 @@ body {
     opacity: 0.95;
     letter-spacing: 12px;
     text-shadow: 
-        0 2px 4px rgba(0, 0, 0, 0.3),
-        0 4px 8px rgba(0, 0, 0, 0.2);
+        0 1px 0 #bbb,
+        0 2px 0 #b9b9b9,
+        0 3px 0 #aaa,
+        0 4px 1px rgba(0,0,0,.1),
+        0 0 5px rgba(0,0,0,.1),
+        0 1px 3px rgba(0,0,0,.3),
+        0 3px 5px rgba(0,0,0,.2),
+        0 5px 10px rgba(0,0,0,.25),
+        0 0 20px rgba(255, 255, 255, 0.2);
     position: relative;
     animation: subtitleFade 4s ease-in-out infinite;
 }
@@ -201,15 +221,35 @@ body {
 @keyframes titleGlow {
     from {
         text-shadow: 
-            0 0 10px rgba(255, 255, 255, 0.3),
-            0 4px 8px rgba(0, 0, 0, 0.3),
-            0 8px 16px rgba(0, 0, 0, 0.2);
+            0 1px 0 #ccc,
+            0 2px 0 #c9c9c9,
+            0 3px 0 #bbb,
+            0 4px 0 #b9b9b9,
+            0 5px 0 #aaa,
+            0 6px 1px rgba(0,0,0,.1),
+            0 0 5px rgba(0,0,0,.1),
+            0 1px 3px rgba(0,0,0,.3),
+            0 3px 5px rgba(0,0,0,.2),
+            0 5px 10px rgba(0,0,0,.25),
+            0 10px 10px rgba(0,0,0,.2),
+            0 20px 20px rgba(0,0,0,.15),
+            0 0 30px rgba(255, 255, 255, 0.3);
     }
     to {
         text-shadow: 
-            0 0 20px rgba(255, 255, 255, 0.5),
-            0 4px 8px rgba(0, 0, 0, 0.3),
-            0 8px 16px rgba(0, 0, 0, 0.2);
+            0 1px 0 #ccc,
+            0 2px 0 #c9c9c9,
+            0 3px 0 #bbb,
+            0 4px 0 #b9b9b9,
+            0 5px 0 #aaa,
+            0 6px 1px rgba(0,0,0,.1),
+            0 0 5px rgba(0,0,0,.1),
+            0 1px 3px rgba(0,0,0,.3),
+            0 3px 5px rgba(0,0,0,.2),
+            0 5px 10px rgba(0,0,0,.25),
+            0 10px 10px rgba(0,0,0,.2),
+            0 20px 20px rgba(0,0,0,.15),
+            0 0 50px rgba(255, 255, 255, 0.6);
     }
 }
 
@@ -275,6 +315,13 @@ body {
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
     position: relative;
     overflow: hidden;
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
 }
 
 .product-image::before {
