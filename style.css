@@ -53,9 +53,28 @@ body {
     overflow: hidden;
 }
 
+.page:nth-child(1) { z-index: 18; }
+.page:nth-child(2) { z-index: 17; }
+.page:nth-child(3) { z-index: 16; }
+.page:nth-child(4) { z-index: 15; }
+.page:nth-child(5) { z-index: 14; }
+.page:nth-child(6) { z-index: 13; }
+.page:nth-child(7) { z-index: 12; }
+.page:nth-child(8) { z-index: 11; }
+.page:nth-child(9) { z-index: 10; }
+.page:nth-child(10) { z-index: 9; }
+.page:nth-child(11) { z-index: 8; }
+.page:nth-child(12) { z-index: 7; }
+.page:nth-child(13) { z-index: 6; }
+.page:nth-child(14) { z-index: 5; }
+.page:nth-child(15) { z-index: 4; }
+.page:nth-child(16) { z-index: 3; }
+.page:nth-child(17) { z-index: 2; }
+.page:nth-child(18) { z-index: 1; }
+
 .page.cover {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    z-index: 100;
+    z-index: 100 !important;
 }
 
 .page.back-cover {
