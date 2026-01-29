@@ -68,18 +68,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    function handlePageClick(event) {
-        if (isSwipe) return;
-        const page = event.currentTarget;
-        const index = Array.from(pages).indexOf(page);
-        
-        if (index === currentPageIndex) {
-            nextPage();
-        } else if (index === currentPageIndex - 1) {
-            prevPage();
-        }
-    }
-    
     function handleTouchStart(event) {
         isSwipe = false;
         startY = event.touches[0].clientY;
@@ -161,8 +149,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     pages.forEach(page => {
-        page.addEventListener('click', handlePageClick);
-        
         page.addEventListener('touchstart', handleTouchStart, { passive: true });
         page.addEventListener('touchmove', handleTouchMove, { passive: true });
         page.addEventListener('touchend', handleTouchEnd, { passive: true });
