@@ -212,6 +212,56 @@ body {
     line-height: 1.6;
 }
 
+.spec-selector {
+    margin-top: 25px;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border-left: 4px solid #3498db;
+}
+
+.spec-label {
+    font-size: 14px;
+    color: #2c3e50;
+    font-weight: 700;
+    margin-bottom: 12px;
+    letter-spacing: 0.5px;
+}
+
+.spec-options {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.spec-btn {
+    padding: 8px 16px;
+    border: 2px solid #e0e0e0;
+    background: white;
+    color: #555;
+    font-size: 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    outline: none;
+}
+
+.spec-btn:hover {
+    border-color: #3498db;
+    color: #3498db;
+}
+
+.spec-btn.active {
+    border-color: #3498db;
+    background: #3498db;
+    color: white;
+}
+
+.spec-btn:active {
+    transform: scale(0.95);
+}
+
 .price-box {
     display: flex;
     justify-content: space-between;
@@ -322,6 +372,19 @@ body {
     
     .price-value {
         font-size: 24px;
+    }
+    
+    .spec-selector {
+        padding: 12px;
+    }
+    
+    .spec-label {
+        font-size: 13px;
+    }
+    
+    .spec-btn {
+        padding: 6px 12px;
+        font-size: 13px;
     }
 }
 
@@ -471,7 +534,20 @@ body {
     }
     
     .price-value {
-        font-size: 18px;
+        font-size: 20px;
+    }
+    
+    .spec-selector {
+        padding: 10px;
+    }
+    
+    .spec-label {
+        font-size: 12px;
+    }
+    
+    .spec-btn {
+        padding: 5px 10px;
+        font-size: 12px;
     }
     
     .navigation-hint {

@@ -22,6 +22,36 @@ document.addEventListener('DOMContentLoaded', function() {
         pages[currentPageIndex].style.transform = 'rotateX(0deg)';
     }
     
+    function initSpecSelectors() {
+        const specSelectors = document.querySelectorAll('.spec-selector');
+        
+        specSelectors.forEach(selector => {
+            const specBtns = selector.querySelectorAll('.spec-btn');
+            const priceBox = selector.nextElementSibling;
+            const factoryPriceEl = priceBox.querySelector('.factory-price');
+            const retailPriceEl = priceBox.querySelector('.retail-price');
+            
+            specBtns.forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    
+                    specBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    const factoryPrice = this.getAttribute('data-factory');
+                    const retailPrice = this.getAttribute('data-retail');
+                    
+                    if (factoryPriceEl && factoryPrice) {
+                        factoryPriceEl.textContent = '¥' + factoryPrice;
+                    }
+                    if (retailPriceEl && retailPrice) {
+                        retailPriceEl.textContent = '¥' + retailPrice;
+                    }
+                });
+            });
+        });
+    }
+    
     function nextPage() {
         if (currentPageIndex < totalPages - 1) {
             pages[currentPageIndex].classList.add('flipped');
@@ -79,9 +109,9 @@ document.addEventListener('DOMContentLoaded', function() {
         const diffX = endX - startX;
         
         if (Math.abs(diffX) > Math.abs(diffY)) {
-            if (Math.abs(diffX) > SWIPE_THRESHOLD && diffX > 0) {
+            if (Math.abs(diffX) > SWIPE_THRESHOLD && diffX < 0) {
                 nextPage();
-            } else if (Math.abs(diffX) > SWIPE_THRESHOLD && diffX < 0) {
+            } else if (Math.abs(diffX) > SWIPE_THRESHOLD && diffX > 0) {
                 prevPage();
             }
         }
@@ -113,9 +143,9 @@ document.addEventListener('DOMContentLoaded', function() {
         
         const diffX = endX - startX;
         
-        if (Math.abs(diffX) > SWIPE_THRESHOLD && diffX > 0) {
+        if (Math.abs(diffX) > SWIPE_THRESHOLD && diffX < 0) {
             nextPage();
-        } else if (Math.abs(diffX) > SWIPE_THRESHOLD && diffX < 0) {
+        } else if (Math.abs(diffX) > SWIPE_THRESHOLD && diffX > 0) {
             prevPage();
         }
     }
@@ -147,4 +177,5 @@ document.addEventListener('DOMContentLoaded', function() {
     }, 100);
     
     initCurrentPage();
+    initSpecSelectors();
 });
