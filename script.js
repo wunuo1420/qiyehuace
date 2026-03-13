@@ -30,6 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const priceBox = selector.nextElementSibling;
             const factoryPriceEl = priceBox.querySelector('.factory-price');
             const retailPriceEl = priceBox.querySelector('.retail-price');
+            const productImage = selector.previousElementSibling.querySelector('img');
             
             specBtns.forEach(btn => {
                 btn.addEventListener('click', function(e) {
@@ -40,12 +41,16 @@ document.addEventListener('DOMContentLoaded', function() {
                     
                     const factoryPrice = this.getAttribute('data-factory');
                     const retailPrice = this.getAttribute('data-retail');
+                    const imageSrc = this.getAttribute('data-image');
                     
                     if (factoryPriceEl && factoryPrice) {
                         factoryPriceEl.textContent = '¥' + factoryPrice;
                     }
                     if (retailPriceEl && retailPrice) {
                         retailPriceEl.textContent = '¥' + retailPrice;
+                    }
+                    if (productImage && imageSrc) {
+                        productImage.src = imageSrc;
                     }
                 });
             });
